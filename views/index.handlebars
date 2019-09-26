@@ -1,12 +1,11 @@
 <div id="logo">
-    <img src="https://cdn.wallpapersafari.com/60/53/ZjsAkn.jpg" alt="Logo of Eat-Da-Burger!">
+    <img id='logo-img' src="https://cdn.wallpapersafari.com/60/53/ZjsAkn.jpg" alt="Logo of Eat-Da-Burger!">
 </div>
 
 <h1>Eat-da-Burger!</h1>
-
-<h2>Build a Burger</h2>
+<hr>
 <form class="create-form" id="build-burger">
-    <label for="bn">Burger Name: </label>
+    <label for="bn">Name a burger to build: </label>
     <input type="text" id="bn" name="name">
     {{!-- <textarea type="text" name="build" placeholder="build a burger (e.g. Super-chomper)"></textarea> --}}
     <button type="submit">Submit Order!</button>
@@ -14,41 +13,24 @@
 
 
 {{!-- This waiting area displays uneaten burgers --}}
-<section class="burgers">
+<section class="split left">
     <ul>
         {{#each burgers}}
         {{#unless devoured}}
-        {{burger}} <button class="devour-burger" data-id="{{this.id}}">DEVOUR!</button>
+        <li>{{this.burger_name}} <button class="devour-burger" data-id="{{this.id}}">DEVOUR!</button></li>
         {{/unless}}
         {{/each}}
-
-        {{!-- {{#each new-burgers}}
-        <li>
-            <p>
-                {{this.id}}. {{this.name}}
-
-                <button data-burgerId="{{this.id}}" class="devour">Devour it!</button>
-            </p>
-        </li>
-        {{/each}} --}}
     </ul>
 </section>
 
 {{!-- This section displays eaten burgers  --}}
-<section class="devoured">
+<section class="split right">
     <ul>
         {{#each burgers}}
         {{#if devoured}}
-        {{burger}}
+        <li>{{this.burger_name}}</li>
         {{/if}}
         {{/each}}
-        {{!-- {{#each burgers}}
-        <li>
-            <p>
-                {{this.id}}. {{this.name}}
-            </p>
-        </li>
-        {{/each}} --}}
     </ul>
 </section>
 
@@ -60,7 +42,8 @@
             event.preventDefault();
 
             let newBurger = {
-                name: $("#bn").val().trim()
+                burger_name: $("#bn").val().trim(),
+                devoured: 0
             };
 
             // Send the POST request.
@@ -80,7 +63,7 @@
             let id = $(this).data("id");
 
             let devouredState = {
-                devoured: TRUE
+                devoured: 1
             };
 
             // Send the PUT request.
@@ -89,7 +72,7 @@
                 data: devouredState
             }).then(
                 function () {
-                    console.log("changed devoured state to ", devoured);
+                    console.log(`burger ${id} was devoured`);
                     // Reload the page to get the updated list
                     location.reload();
                 }
