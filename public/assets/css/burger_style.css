@@ -2,10 +2,16 @@ body {
   text-align: center;
 }
 
+.jumbotron {
+  top: 0;
+  max-height: 50vh;
+}
+
 #logo-img {
   display: block;
   margin: 0 auto;
   max-width: 30%;
+  height: auto;
 }
 
 label {
@@ -44,10 +50,15 @@ label {
   background-color: rgb(197, 70, 70);
 }
 
+.burger-header {
+  text-align: center;
+  margin: 0;
+}
+
 li {
   margin-bottom: 0.75rem;
 }
 
-.devour-burger {
+.devour-btn {
   margin-left: 1rem;
 }
