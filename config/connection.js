@@ -2,7 +2,6 @@
 // DEPENDENCIES
 // ==============================================================================
 const mysql = require("mysql");
-let started = false;
 
 // ==============================================================================
 // DATABASE CONNECTION
@@ -15,10 +14,13 @@ let connection = mysql.createConnection({
     database: "burgers_db"
 })
 
-// Call this to end app.
-// let farewell = function () {
-//     connection.end();
-//     console.log(`\n===== CLOSING SUPERVISION PORTAL =====\n\n\n`);
-// }
+// Make connection.
+connection.connect(function (err) {
+    if (err) {
+        console.error("error connecting: " + err.stack);
+        return;
+    }
+    console.log("connected as id " + connection.threadId);
+});
 
 module.exports = connection;
