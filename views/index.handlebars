@@ -1,46 +1,60 @@
-<div class="jumbotron">
-    <div id="logo">
-        <img id='logo-img' src="https://cdn.wallpapersafari.com/60/53/ZjsAkn.jpg" alt="Logo of Eat-Da-Burger!">
+<div class="container" id="main-container">
+
+    {{!-- Logo and burger builder --}}
+    <div class="jumbo-board">
+        <div id="logo">
+            <img id='logo-img'
+                src="https://www.chimpstickers.com/wp-content/uploads/2017/11/cute-things024-hamburguer.png"
+                alt="Logo of Eat-Da-Burger!">
+        </div>
+
+        <h1>Eat-da-Burger!</h1>
+        <hr>
+        <form class="create-form" id="build-burger">
+            <label for="bn">Name a burger to build: </label>
+            <input type="text" id="bn" name="name">
+            {{!-- <textarea type="text" name="build" placeholder="build a burger (e.g. Super-chomper)"></textarea> --}}
+            <button type="submit">Submit Order!</button>
+        </form>
+        {{!-- End of jumbo-board --}}
     </div>
 
-    <h1>Eat-da-Burger!</h1>
-    <hr>
-    <form class="create-form" id="build-burger">
-        <label for="bn">Name a burger to build: </label>
-        <input type="text" id="bn" name="name">
-        {{!-- <textarea type="text" name="build" placeholder="build a burger (e.g. Super-chomper)"></textarea> --}}
-        <button type="submit">Submit Order!</button>
-    </form>
-    {{!-- End of jumbotron --}}
-</div>
+    <div class="container">
+        <div class="row">
 
-<div class="container">
-    {{!-- This waiting area displays uneaten burgers --}}
-    <section class="split left">
-        <h2 class='burger-header' id="edible-list">Edible Burgers</h2>
-        <hr>
-        <ul>
-            {{#each burgers}}
-            {{#unless devoured}}
-            <li>{{this.burger_name}} <button class="devour-btn" data-id="{{this.id}}">DEVOUR!</button></li>
-            {{/unless}}
-            {{/each}}
-        </ul>
-    </section>
+            {{!-- This waiting area displays uneaten burgers --}}
+            <div class="col-lg-6 left">
+                <h2 class='burger-header' id="edible-list">Edible Burgers</h2>
+                <hr>
+                <ul>
+                    {{#each burgers}}
+                    {{#unless devoured}}
+                    <li>{{this.burger_name}} <button class="devour-btn" data-id="{{this.id}}">DEVOUR!</button></li>
+                    {{/unless}}
+                    {{/each}}
+                </ul>
+            </div>
 
-    {{!-- This section displays eaten burgers  --}}
-    <section class="split right">
-        <h2 class='burger-header' id="devoured-list">Devoured Burgers</h2>
-        <hr>
-        <ul>
-            {{#each burgers}}
-            {{#if devoured}}
-            <li>{{this.burger_name}}</li>
-            {{/if}}
-            {{/each}}
-        </ul>
-    </section>
-    {{!-- End of container --}}
+            {{!-- This section displays eaten burgers  --}}
+            <div class="col-lg-6 right">
+                <h2 class='burger-header' id="devoured-list">Devoured Burgers</h2>
+                <hr>
+                <ul>
+                    {{#each burgers}}
+                    {{#if devoured}}
+                    <li>{{this.burger_name}}</li>
+                    {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+
+            {{!-- End of row --}}
+        </div>
+
+        {{!-- End of container --}}
+    </div>
+
+    {{!-- End of main container --}}
 </div>
 
 <script type="text/javascript">
@@ -68,7 +82,7 @@
             );
         });
 
-        $(".devour-burger").on("click", function (event) {
+        $(".devour-btn").on("click", function (event) {
             let id = $(this).data("id");
 
             let devouredState = {

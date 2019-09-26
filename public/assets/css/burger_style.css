@@ -2,10 +2,10 @@ body {
   text-align: center;
 }
 
-.jumbotron {
+/* .jumbotron {
   top: 0;
   max-height: 50vh;
-}
+} */
 
 #logo-img {
   display: block;
@@ -24,8 +24,8 @@ label {
   padding: 1rem;
   margin: 1rem;
 }
-
-/* Split the screen in half */
+/*
+/* Split the screen in half
 .split {
   height: 50%;
   width: 50%;
@@ -38,17 +38,18 @@ label {
   text-align: left;
 }
 
-/* Control the left side */
+/* Control the left side 
 .left {
   left: 0;
   background-color: rgb(38, 209, 52);
 }
 
-/* Control the right side */
+/* Control the right side 
 .right {
   right: 0;
   background-color: rgb(197, 70, 70);
 }
+*/
 
 .burger-header {
   text-align: center;
