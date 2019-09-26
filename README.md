@@ -4,9 +4,7 @@
 
 This web application demonstrates a full-stack interaction on a Node-Handlebars-MySQL platform.
 
-Don't let the cutest burger in the world fool you!
-
-He is a lean, mean, grillin' machine... _Wait, does that make sense?_
+Don't let the cutest burger in the world fool you! He is a lean, mean, grillin' machine... _Wait, does that make sense?_
 
 ---
 
@@ -20,9 +18,9 @@ He is a lean, mean, grillin' machine... _Wait, does that make sense?_
 
 ![Eat-Da-Burger Screenshot](./public/assets/img/burgersSS01.png)
 
-2. If a new burger is created, it will be added the list of edible burgers.
+2. If a new burger is created, it gets added to the list of edible burgers.
 
-3. If a burger is devoured, it will be moved from the list of edible burgers to the list of devoured burgers.
+3. If a burger is devoured, it gets moved from the list of edible burgers to the list of devoured burgers.
 
 4. All interactions -- creations and updates -- are reflected on a MySQL database.
 
