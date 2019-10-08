@@ -24,7 +24,7 @@ label {
   padding: 1rem;
   margin: 1rem;
 }
-/*
+
 /* Split the screen in half
 .split {
   height: 50%;
@@ -37,19 +37,19 @@ label {
   font-size: 1.5rem;
   text-align: left;
 }
+*/
 
-/* Control the left side 
+/* Control the left side */
 .left {
-  left: 0;
+  /* left: 0; */
   background-color: rgb(38, 209, 52);
 }
 
-/* Control the right side 
+/* Control the right side */
 .right {
-  right: 0;
+  /* right: 0; */
   background-color: rgb(197, 70, 70);
 }
-*/
 
 .burger-header {
   text-align: center;

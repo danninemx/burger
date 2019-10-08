@@ -24,28 +24,31 @@
 
             {{!-- This waiting area displays uneaten burgers --}}
             <div class="col-lg-6 left">
-                <h2 class='burger-header' id="edible-list">Edible Burgers</h2>
+                <h2 class='burger-header'>Edible Burgers</h2>
                 <hr>
-                <ul>
+                <ul class="edible-list">
                     {{#each burgers}}
                     {{#unless devoured}}
-                    <li>{{this.burger_name}} <button class="devour-btn" data-id="{{this.id}}">DEVOUR!</button></li>
+                    <li>#{{this.id}}: {{this.burger_name}} <button class="devour-btn"
+                            data-id="{{this.id}}">DEVOUR!</button></li>
                     {{/unless}}
                     {{/each}}
                 </ul>
+                {{!-- End of left column --}}
             </div>
 
             {{!-- This section displays eaten burgers  --}}
             <div class="col-lg-6 right">
-                <h2 class='burger-header' id="devoured-list">Devoured Burgers</h2>
+                <h2 class='burger-header'>Devoured Burgers</h2>
                 <hr>
-                <ul>
+                <ul class="devoured-list">
                     {{#each burgers}}
                     {{#if devoured}}
-                    <li>{{this.burger_name}}</li>
+                    <li>#{{this.id}}: {{this.burger_name}}</li>
                     {{/if}}
                     {{/each}}
                 </ul>
+                {{!-- End of right column --}}
             </div>
 
             {{!-- End of row --}}
@@ -64,22 +67,27 @@
             // Make sure to preventDefault on a submit event.
             event.preventDefault();
 
-            let newBurger = {
-                burger_name: $("#bn").val().trim(),
-                devoured: 0
-            };
+            // Validate burger name input
+            if ($('#bn').val()) {
 
-            // Send the POST request.
-            $.ajax("/api/burgers", {
-                type: "POST",
-                data: newBurger
-            }).then(
-                function () {
-                    console.log("created new burger");
-                    // Reload the page to get the updated list
-                    location.reload();
-                }
-            );
+                let newBurger = {
+                    burger_name: $("#bn").val().trim(),
+                    devoured: 0
+                };
+
+                // Send the POST request.
+                $.ajax("/api/burgers", {
+                    type: "POST",
+                    data: newBurger
+                }).then(
+                    function () {
+                        console.log("created new burger");
+                        // Reload the page to get the updated list
+                        location.reload();
+                    }
+                );
+
+            }
         });
 
         $(".devour-btn").on("click", function (event) {
